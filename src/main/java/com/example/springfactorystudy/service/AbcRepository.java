@@ -1,7 +1,7 @@
 package com.example.springfactorystudy.service;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.keyvalue.repository.KeyValueRepository;
 
-public interface AbcRepository extends CrudRepository<Hello, String> {
+public interface AbcRepository extends KeyValueRepository<Hello, String> {
 
 }

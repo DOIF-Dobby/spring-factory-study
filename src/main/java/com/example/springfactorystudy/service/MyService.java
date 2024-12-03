@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class MyService {
 
-    private final HelloRepository helloRepository;
+    private final AbcRepository repository;
 
     public void save() {
-        System.out.println("Hello");
+        repository.save(new Hello());
     }
 
 }
