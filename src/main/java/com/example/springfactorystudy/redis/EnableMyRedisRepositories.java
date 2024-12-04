@@ -6,9 +6,11 @@ import java.lang.annotation.Inherited;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+import org.springframework.beans.factory.support.BeanNameGenerator;
 import org.springframework.context.annotation.ComponentScan.Filter;
 import org.springframework.context.annotation.Import;
 import org.springframework.data.redis.repository.support.RedisRepositoryFactoryBean;
+import org.springframework.data.repository.config.DefaultRepositoryBaseClass;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
@@ -32,4 +34,8 @@ public @interface EnableMyRedisRepositories {
     String namedQueriesLocation() default "";
 
     String repositoryImplementationPostfix() default "Impl";
+
+    Class<?> repositoryBaseClass() default DefaultRepositoryBaseClass.class;
+
+    Class<? extends BeanNameGenerator> nameGenerator() default BeanNameGenerator.class;
 }

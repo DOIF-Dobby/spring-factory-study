@@ -14,9 +14,9 @@ public class MyRedisRepositoryFactory extends RepositoryFactorySupport {
 
     @Override
     protected Object getTargetRepository(RepositoryInformation metadata) {
-        EntityInformation<?, ?> entityInformation = getEntityInformation(metadata.getDomainType());
-        return super.getTargetRepositoryViaReflection(metadata, entityInformation);
-//        return new SimpleMyRedisRepository<>();
+//        EntityInformation<?, ?> entityInformation = getEntityInformation(metadata.getDomainType());
+//        return super.getTargetRepositoryViaReflection(metadata, entityInformation);
+        return new SimpleMyRedisRepository<>();
     }
 
     @Override

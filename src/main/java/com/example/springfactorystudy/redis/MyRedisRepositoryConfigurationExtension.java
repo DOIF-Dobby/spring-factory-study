@@ -1,5 +1,6 @@
 package com.example.springfactorystudy.redis;
 
+import java.lang.annotation.Annotation;
 import java.util.Collection;
 import java.util.Collections;
 import org.springframework.data.repository.config.RepositoryConfigurationExtensionSupport;
@@ -24,5 +25,10 @@ public class MyRedisRepositoryConfigurationExtension extends RepositoryConfigura
     @Override
     protected Collection<Class<?>> getIdentifyingTypes() {
         return Collections.singleton(MyRedisRepository.class);
+    }
+
+    @Override
+    protected Collection<Class<? extends Annotation>> getIdentifyingAnnotations() {
+        return Collections.singleton(RedisString.class);
     }
 }

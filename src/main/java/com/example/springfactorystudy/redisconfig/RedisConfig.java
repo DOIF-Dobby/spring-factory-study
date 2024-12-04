@@ -1,5 +1,6 @@
 package com.example.springfactorystudy.redisconfig;
 
+import com.example.springfactorystudy.redis.EnableMyRedisRepositories;
 import com.example.springfactorystudy.service.MyService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
@@ -9,14 +10,15 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
 
-@Configuration
-@EnableRedisRepositories(
-    redisTemplateRef = "redisTemplate",
-    keyValueTemplateRef = "redisTemplate" // 전혀 영향이 없네
-)
+//@Configuration
+//@EnableMyRedisRepositories
+//@EnableRedisRepositories(
+//    redisTemplateRef = "redisTemplate",
+//    keyValueTemplateRef = "redisTemplate" // 전혀 영향이 없네
+//)
 public class RedisConfig {
 
-    @Bean(name = "redisTemplate")
+//    @Bean(name = "redisTemplate")
     public RedisTemplate<String, String> redisTemplate(RedisConnectionFactory redisConnectionFactory) {
         var template = new RedisTemplate<String, String>();
 
@@ -34,6 +36,7 @@ public class RedisConfig {
     @Bean
     public CommandLineRunner runner(MyService myService) {
         return args -> {
+            System.out.println(" runner ");
             myService.save();
         };
     }

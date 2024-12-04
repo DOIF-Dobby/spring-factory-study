@@ -1,8 +1,9 @@
 package com.example.springfactorystudy.service;
 
-import org.springframework.data.redis.core.RedisHash;
+import com.example.springfactorystudy.redis.RedisString;
+import lombok.ToString;
 
-@RedisHash("hello")
+@ToString
 public class Hello {
     private String id = "1";
     private String name = "mj";
