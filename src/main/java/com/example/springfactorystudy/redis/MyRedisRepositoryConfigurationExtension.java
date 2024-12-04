@@ -3,6 +3,9 @@ package com.example.springfactorystudy.redis;
 import java.lang.annotation.Annotation;
 import java.util.Collection;
 import java.util.Collections;
+import org.springframework.beans.factory.support.BeanDefinitionBuilder;
+import org.springframework.core.annotation.AnnotationAttributes;
+import org.springframework.data.repository.config.AnnotationRepositoryConfigurationSource;
 import org.springframework.data.repository.config.RepositoryConfigurationExtensionSupport;
 
 public class MyRedisRepositoryConfigurationExtension extends RepositoryConfigurationExtensionSupport {
@@ -28,7 +31,9 @@ public class MyRedisRepositoryConfigurationExtension extends RepositoryConfigura
     }
 
     @Override
-    protected Collection<Class<? extends Annotation>> getIdentifyingAnnotations() {
-        return Collections.singleton(RedisString.class);
+    public void postProcess(BeanDefinitionBuilder builder, AnnotationRepositoryConfigurationSource config) {
+        AnnotationAttributes attributes = config.getAttributes();
+
+        builder.addPropertyReference("myRedisTemplate", "myRedisTemplate");
     }
 }

@@ -10,9 +10,7 @@ import java.lang.annotation.Target;
 @Documented
 @Inherited
 @Retention(RetentionPolicy.RUNTIME)
-@Target(value = { ElementType.TYPE })
-public @interface RedisString {
-
-    String value();
+@Target(value = { ElementType.FIELD })
+public @interface RedisId {
 
 }
